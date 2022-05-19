@@ -1,5 +1,9 @@
 # Machine Learning Project (Bike classification)
 
+Goal of this project is to classify pictures of bikes using a neural network.
+The AI should be able to decide whether a bike is a full suspension bike or a hardtail.
+A secondary goal is to correctly classify e-bikes and bio bikes.
+
 ## Links provided by teacher
 
 - https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_classification/
