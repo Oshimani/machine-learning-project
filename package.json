@@ -1,0 +1,18 @@
+{
+  "name": "machine_learning_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jannick Jungbluth",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^14.1.1"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^5.4.6"
+  }
+}
