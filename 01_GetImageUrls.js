@@ -3,6 +3,19 @@ import { existsSync, mkdirSync, writeFile } from 'fs'
 
 import { createPathIfNotExists } from './00_Utils.js'
 
+const blacklist = [
+    "9d8cf.jpeg",
+    "27c6f.jpeg",
+    "fab42.jpeg",
+    "d4345.jpeg",
+    "8857f.jpeg",
+    "667be.jpeg",
+    "1284d.jpeg",
+    "26714.jpeg",
+    "2aaB4.jpeg",
+    "d3c43.jpeg",
+]
+
 const getUrls = async (pageUrl, selector) => {
     // init browser
     const browser = await puppeteer.launch()
@@ -12,9 +25,15 @@ const getUrls = async (pageUrl, selector) => {
     await page.waitForNetworkIdle()
 
     // get image tags and retrieve their src attribute
-    const urls = await page.$$eval(selector,
+    let urls = await page.$$eval(selector,
         images => images.map(image => image.getAttribute("src"))
     )
+
+    // filter blacklisted urls
+    urls = urls.filter(url => {
+        const filename = url.split("/").pop()
+        return !blacklist.includes(filename)
+    })
 
     // logging
     console.log("Found " + urls.length + " images of bikes")
@@ -42,13 +61,28 @@ const writeUrlsToFile = async (urls, path, separator) => {
 // MAIN FUNCTION
 (async () => {
 
-    // NON E-BIKES
+    let type = "training"
+    // BIO BIKES
     // get pictures of fullys
-    const fullyUrls = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&region=europe&suspension=full", "div picture img")
-    await writeUrlsToFile(fullyUrls, "./urls/bio/fullys.txt", ";")
+    const fullyUrlsBelow5k = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&price=-5000&region=europe&suspension=full", "div picture img")
+    const fullyUrlsAbove5k = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&price=5000-&region=europe&suspension=full", "div picture img")
+
+    await writeUrlsToFile(fullyUrlsBelow5k, `./urls/${type}/fullys1.txt`, ";")
+    await writeUrlsToFile(fullyUrlsAbove5k, `./urls/${type}/fullys2.txt`, ";")
+
 
     // get pictures of hardtails
-    const hardtailUrls = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&region=europe&suspension=hardtail", "div picture img")
-    await writeUrlsToFile(hardtailUrls, "./urls/bio/hardtails.txt", ";")
+    const hardtailUrlsBelow5K = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&frameset=0&price=-5000&region=europe&suspension=hardtail", "div picture img")
+    const hardtailUrlsAbove5K = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&frameset=0&price=5000-&region=europe&suspension=hardtail", "div picture img")
+
+    await writeUrlsToFile(hardtailUrlsBelow5K, `./urls/${type}/hardtails1.txt`, ";")
+    await writeUrlsToFile(hardtailUrlsAbove5K, `./urls/${type}/hardtails2.txt`, ";")
+
+
+    // TESTDATA
+    type = "test"
+    const testUrls = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&region=europe", "div picture img")
+
+    await writeUrlsToFile(testUrls, `./urls/${type}/test.txt`, ";")
 
 })()
