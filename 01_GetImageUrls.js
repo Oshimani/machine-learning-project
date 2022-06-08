@@ -89,12 +89,11 @@ const writeUrlsToFile = async (urls, path, separator) => {
     //  prevent data leakage
     // remove all urls from testdata that are in the training data
     const testUrlsWithoutTraining = testUrls.filter(url => {
-        const filename = url.split("/").pop()
         return !(
-            fullyUrlsBelow5k.includes(filename)
-            || fullyUrlsAbove5k.includes(filename)
-            || hardtailUrlsBelow5K.includes(filename)
-            || hardtailUrlsAbove5K.includes(filename)
+            fullyUrlsBelow5k.includes(url)
+            || fullyUrlsAbove5k.includes(url)
+            || hardtailUrlsBelow5K.includes(url)
+            || hardtailUrlsAbove5K.includes(url)
         )
     })
     console.log(`Found ${testUrlsWithoutTraining.length} images of bikes for testing`)
