@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, writeFile } from 'fs'
 
 import { createPathIfNotExists } from './00_Utils.js'
 
+// these are images that are either falsely classified by the website or are not complete bikes (Framesets)
 const blacklist = [
     "9d8cf.jpeg",
     "27c6f.jpeg",
@@ -15,6 +16,7 @@ const blacklist = [
     "2aaB4.jpeg",
     "d3c43.jpeg",
     "8f3f8.jpeg",
+    "2aa84.jpeg",
 ]
 
 const getUrls = async (pageUrl, selector) => {
@@ -84,6 +86,19 @@ const writeUrlsToFile = async (urls, path, separator) => {
     type = "test"
     const testUrls = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&region=europe", "div picture img")
 
-    await writeUrlsToFile(testUrls, `./urls/${type}/test.txt`, ";")
+    //  prevent data leakage
+    // remove all urls from testdata that are in the training data
+    const testUrlsWithoutTraining = testUrls.filter(url => {
+        const filename = url.split("/").pop()
+        return !(
+            fullyUrlsBelow5k.includes(filename)
+            || fullyUrlsAbove5k.includes(filename)
+            || hardtailUrlsBelow5K.includes(filename)
+            || hardtailUrlsAbove5K.includes(filename)
+        )
+    })
+    console.log(`Found ${testUrlsWithoutTraining.length} images of bikes for testing`)
+
+    await writeUrlsToFile(testUrlsWithoutTraining, `./urls/${type}/test.txt`, ";")
 
 })()
