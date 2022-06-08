@@ -35,22 +35,22 @@ const getUrlsFromFile = (path) => {
     // TRAIN DATA
     let type = "training"
 
-    // // FULLYS
-    // const fullyFiles = ["fullys1.txt", "fullys2.txt"]
+    // FULLYS
+    const fullyFiles = ["fully1.txt", "fully2.txt"]
 
-    // fullyFiles.map(async file => {
-    //     const fullyUrls = getUrlsFromFile(`./urls/${type}/${file}`)
-    //     await downloadImages(fullyUrls, `./images/${type}/fullys`)
-    // })
+    fullyFiles.map(async file => {
+        const fullyUrls = getUrlsFromFile(`./urls/${type}/${file}`)
+        await downloadImages(fullyUrls, `./images/${type}/fully`)
+    })
 
 
-    // // HARDTAILS
-    // const hardtailFiles = ["hardtails1.txt", "hardtails2.txt"]
+    // HARDTAILS
+    const hardtailFiles = ["hardtail1.txt", "hardtail2.txt"]
 
-    // hardtailFiles.map(async file => {
-    //     const hardtailUrls = getUrlsFromFile(`./urls/${type}/${file}`)
-    //     await downloadImages(hardtailUrls, `./images/${type}/hardtails`)
-    // })
+    hardtailFiles.map(async file => {
+        const hardtailUrls = getUrlsFromFile(`./urls/${type}/${file}`)
+        await downloadImages(hardtailUrls, `./images/${type}/hardtail`)
+    })
 
 
     // TEST DATA

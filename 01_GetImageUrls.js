@@ -67,16 +67,16 @@ const writeUrlsToFile = async (urls, path, separator) => {
     const fullyUrlsBelow5k = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&price=-5000&region=europe&suspension=full", "div picture img")
     const fullyUrlsAbove5k = await getUrls("https://99spokes.com/en-EU/bikes?category=mountain&ebike=0&frameset=0&price=5000-&region=europe&suspension=full", "div picture img")
 
-    await writeUrlsToFile(fullyUrlsBelow5k, `./urls/${type}/fullys1.txt`, ";")
-    await writeUrlsToFile(fullyUrlsAbove5k, `./urls/${type}/fullys2.txt`, ";")
+    await writeUrlsToFile(fullyUrlsBelow5k, `./urls/${type}/fully1.txt`, ";")
+    await writeUrlsToFile(fullyUrlsAbove5k, `./urls/${type}/fully2.txt`, ";")
 
 
     // get pictures of hardtails
     const hardtailUrlsBelow5K = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&frameset=0&price=-5000&region=europe&suspension=hardtail", "div picture img")
     const hardtailUrlsAbove5K = await getUrls("https://99spokes.com/en-EU/bikes?ebike=0&frameset=0&price=5000-&region=europe&suspension=hardtail", "div picture img")
 
-    await writeUrlsToFile(hardtailUrlsBelow5K, `./urls/${type}/hardtails1.txt`, ";")
-    await writeUrlsToFile(hardtailUrlsAbove5K, `./urls/${type}/hardtails2.txt`, ";")
+    await writeUrlsToFile(hardtailUrlsBelow5K, `./urls/${type}/hardtail1.txt`, ";")
+    await writeUrlsToFile(hardtailUrlsAbove5K, `./urls/${type}/hardtail2.txt`, ";")
 
 
     // TESTDATA
