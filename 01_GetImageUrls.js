@@ -14,6 +14,7 @@ const blacklist = [
     "26714.jpeg",
     "2aaB4.jpeg",
     "d3c43.jpeg",
+    "8f3f8.jpeg",
 ]
 
 const getUrls = async (pageUrl, selector) => {
