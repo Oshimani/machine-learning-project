@@ -37,3 +37,12 @@ To download images from those urls run:
 ```sh
 node 02_DownloadImages.js
 ```
+
+---
+
+# Research to be done
+- What is Conv2D Layer
+- What is MaxPool2D Layer
+- What is relu activation
+- What is tf.losses.SparseCategoricalCrossentropy(from_logits=True)
+- What is tf.nn.softmax
