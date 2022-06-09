@@ -46,3 +46,17 @@ node 02_DownloadImages.js
 - What is relu activation
 - What is tf.losses.SparseCategoricalCrossentropy(from_logits=True)
 - What is tf.nn.softmax
+
+
+-	Präsentation
+o	Warum das Thema, warum ist es wichtig?
+o	Fokus auf Praxis und keine Theorie?
+	Theoretischer Hintergrund
+	Warum das ausgewählte Verfahren?
+	Welche Daten?
+-	Aufbau des NN
+o	Welche Schichten?
+	Was machen die Layer?
+	https://towardsdatascience.com/covolutional-neural-network-cb0883dd6529
+-	Tranings Set ist sehr klein nur 7
+Nächste Vorlesung ist 23.7.
