@@ -18,7 +18,7 @@ A secondary goal is to correctly classify e-bikes and bio bikes.
 Images are being fetched from 99spokes.com as they provide lots of images of bikes with white background.
 
 ### Requirements
-- Node v17.5 or higher (required fetch api)
+- Node v17.5 or higher (fetch api required)
 
 ### Download Images
 **make sure that the page url, selector and folder paths are configured propperly.**
@@ -37,26 +37,3 @@ To download images from those urls run:
 ```sh
 node 02_DownloadImages.js
 ```
-
----
-
-# Research to be done
-- What is Conv2D Layer
-- What is MaxPool2D Layer
-- What is relu activation
-- What is tf.losses.SparseCategoricalCrossentropy(from_logits=True)
-- What is tf.nn.softmax
-
-
--	Präsentation
-o	Warum das Thema, warum ist es wichtig?
-o	Fokus auf Praxis und keine Theorie?
-	Theoretischer Hintergrund
-	Warum das ausgewählte Verfahren?
-	Welche Daten?
--	Aufbau des NN
-o	Welche Schichten?
-	Was machen die Layer?
-	https://towardsdatascience.com/covolutional-neural-network-cb0883dd6529
--	Tranings Set ist sehr klein nur 7
-Nächste Vorlesung ist 23.7.
