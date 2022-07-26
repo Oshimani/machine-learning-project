@@ -1,5 +1,7 @@
 # Machine Learning Project (Bike classification)
 
+All images taken from [99Spokes.com](https://www.99spokes.com/).
+
 Goal of this project is to classify pictures of bikes using a neural network.
 The AI should be able to decide whether a bike is a full suspension bike or a hardtail.
 A secondary goal is to correctly classify e-bikes and bio bikes.
